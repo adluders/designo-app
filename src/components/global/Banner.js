@@ -15,13 +15,13 @@ const updateDisplay = (location) => {
 const changeFlexDir = (location) => {
   switch (location) {
     default:
-      return "flex-direction: row";
+      return "row";
     case "hero":
-      return "flex-direction: column ";
+      return "column ";
   }
 };
 
-const Banner = styled.div`
+const Banner = styled.section`
   background-color: #e7816b;
   background-repeat: no-repeat;
   background-position: 100%;
@@ -33,7 +33,8 @@ const Banner = styled.div`
   ${({ location }) => updateDisplay(location)};
 
   @media screen and (max-width: 768px) {
-    ${({ location }) => changeFlexDir(location)}
+    flex-direction: ${({ location }) => changeFlexDir(location)};
+    /* height: 20%; */
   }
 `;
 
