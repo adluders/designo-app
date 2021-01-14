@@ -3,14 +3,13 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
-import { Container } from "./components/global/GlobalStyles";
+import ScrollTop from "./components/global/ScrollTop";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Container>
-        <App />
-      </Container>
+      <ScrollTop />
+      <App />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

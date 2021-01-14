@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import BgPattern from "../../assets/home/desktop/bg-pattern-hero-home.svg";
 
 const updateDisplay = (location) => {
@@ -28,13 +28,64 @@ const Banner = styled.section`
 
   display: flex;
   align-items: center;
+  flex-direction: ${({ header }) => header && "column !important"};
 
   border-radius: 1rem;
+  padding: ${({ header }) => header && " 3.5rem 0"};
   ${({ location }) => updateDisplay(location)};
+  ${({ nearFooter }) =>
+    nearFooter &&
+    css`
+      position: absolute;
+      bottom: 320px;
+      padding: 6.25rem;
+      z-index: 1;
+      color: #fff;
+      max-width: 77%;
+      div {
+        max-width: 80%;
+      }
+      h1 {
+        text-transform: capitalize;
+      }
+      @media screen and (max-width: 768px) {
+        flex-direction: column !important;
+        text-align: center;
+        padding: 3.7rem;
+        max-width: 90%;
+
+        div {
+          max-width: 100%;
+        }
+      }
+      @media screen and (max-width: 539px) {
+        bottom: 626px;
+      }
+      @media screen and (max-width: 375px) {
+        padding: 4rem 2rem;
+        margin: 2rem;
+      }
+    `}
 
   @media screen and (max-width: 768px) {
     flex-direction: ${({ location }) => changeFlexDir(location)};
-    /* height: 20%; */
+    background-position: center;
+  }
+`;
+
+export const BannerHeading = styled.h1`
+  font-size: 48px;
+  color: #fff;
+  font-weight: 400;
+  text-transform: capitalize;
+`;
+
+export const BannerSubHeading = styled.p`
+  color: #fff;
+  width: 50%;
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
 `;
 

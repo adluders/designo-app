@@ -21,13 +21,14 @@ const MobileNavContent = styled.ul`
   width: 100%;
 
   position: absolute;
-  top: 13%;
+  top: 83px;
   left: 0;
 
   display: flex;
   flex-direction: column;
 
   padding: 4rem 2rem;
+  z-index: 2;
 `;
 
 const MobileLinkItem = styled.li`

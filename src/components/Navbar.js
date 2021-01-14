@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 import { LogoWrapper } from "./global/GlobalStyles";
 import Logo from "../assets/shared/desktop/logo-dark.png";
 
-const NavWrapper = styled.nav`
+export const NavWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 4rem 0;
+  max-width: 77%;
+  margin: 0 auto;
 `;
 
-const NavLinksWrapper = styled.ul`
+export const NavLinksWrapper = styled.ul`
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -19,11 +21,11 @@ const NavLinksWrapper = styled.ul`
   }
 `;
 
-const NavLinks = styled.li`
+export const NavLinks = styled.li`
   list-style: none;
 `;
 
-const NavLinkItem = styled(Link)`
+export const NavLinkItem = styled(Link)`
   color: #333136;
   text-decoration: none;
   text-transform: uppercase;

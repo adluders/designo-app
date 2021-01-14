@@ -1,9 +1,22 @@
 import styled from "styled-components";
 import Banner from "../components/global/Banner";
 import { Button } from "../components/global/Button";
-import { PageLink, LinkItem } from "../components/global/PageLink";
+import {
+  PageLinkWrapper,
+  PageLink,
+  PageLinkItem,
+  PageLinkSubtext,
+  LinksContainer,
+} from "../components/global/PageLink";
+
+import ContentBox from "../components/global/ContentBox";
 
 import HeroPhone from "../assets/home/desktop/image-hero-phone.png";
+import RightArrow from "../assets/shared/desktop/icon-right-arrow.svg";
+
+import Passionate from "../assets/home/desktop/illustration-passionate.svg";
+import Resourceful from "../assets/home/desktop/illustration-resourceful.svg";
+import Friendly from "../assets/home/desktop/illustration-friendly.svg";
 
 const HeroInfoWrapper = styled.div`
   max-width: 50%;
@@ -16,7 +29,7 @@ const HeroInfoWrapper = styled.div`
   }
 `;
 
-const Heading = styled.h1`
+export const Heading = styled.h1`
   font-size: 48px;
   font-weight: 400;
   @media screen and (max-width: 375px) {
@@ -24,39 +37,45 @@ const Heading = styled.h1`
   }
 `;
 
-const SubHeading = styled.p`
+export const SubHeading = styled.p`
   font-size: 16px;
   margin: 1rem auto 2rem auto;
 `;
 
 const HeroGraphicWrapper = styled.div`
-  /* border: solid purple; */
-  /* display: flex;
-  align-items: center;
-  img {
-    align-self: stretch;
-    border: solid red;
-    object-fit: none;
-    object-position: -100px -100px;
-    @media screen and (max-width: 768px) {
-      object-position: initial;
-    }
-  } */
   img {
     object-fit: none;
   }
+  @media screen and (max-width: 768px) {
+    img {
+      object-fit: contain;
+    }
+  }
 `;
 
-const LinksContainer = styled.section`
-  border: solid purple;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  /* margin-bottom: 5rem; */
-  gap: 2rem;
-  margin-top: 10rem;
-`;
+const homepageContents = [
+  {
+    id: 0,
+    graphic: Passionate,
+    header: "passionate",
+    details:
+      "Each project starts with an in-depth brand research to ensure we only create products that serve a purpose. We merge art, design, and technology into exciting new solutions.",
+  },
+  {
+    id: 1,
+    graphic: Resourceful,
+    header: "resourceful",
+    details:
+      "Everything that we do has a strategic purpose. We use an agile approach in all of our projects and value customer collaboration. It guarantees superior results that fulfill our clients’ needs.",
+  },
+  {
+    id: 2,
+    graphic: Friendly,
+    header: "friendly",
+    details:
+      " We are a group of enthusiastic folks who know how to put people first. Our success depends on our customers, and we strive to give them the best experience a company can provide.",
+  },
+];
 
 const Home = () => {
   return (
@@ -80,29 +99,51 @@ const Home = () => {
       </Banner>
 
       <LinksContainer>
-        <PageLink gridSize="double" bgImage="web">
-          <LinkItem to="/web-design">Web</LinkItem>
-        </PageLink>
+        <PageLinkWrapper>
+          <PageLinkItem
+            bgImage="web"
+            tabletImage="web"
+            mobileImage="web"
+            gridSize="double"
+          >
+            <PageLink to="/web-design">
+              web design
+              <PageLinkSubtext>
+                view projects
+                <img src={RightArrow} alt="Call To Action Arrow" />
+              </PageLinkSubtext>
+            </PageLink>
+          </PageLinkItem>
 
-        <PageLink bgImage="app">
-          <LinkItem to="app-design">App</LinkItem>
-        </PageLink>
+          <PageLinkItem bgImage="app" tabletImage="app" mobileImage="app">
+            <PageLink to="/app-design">
+              app design
+              <PageLinkSubtext>
+                view projects
+                <img src={RightArrow} alt="Call To Action Arrow" />
+              </PageLinkSubtext>
+            </PageLink>
+          </PageLinkItem>
 
-        <PageLink bgImage="graphic">
-          <LinkItem to="graphic-design">Graph</LinkItem>
-        </PageLink>
+          <PageLinkItem
+            bgImage="graphic"
+            tabletImage="graphic"
+            mobileImage="graphic"
+          >
+            <PageLink to="/graphic-design">
+              graphic design
+              <PageLinkSubtext>
+                view projects
+                <img src={RightArrow} alt="Call To Action Arrow" />
+              </PageLinkSubtext>{" "}
+            </PageLink>
+          </PageLinkItem>
+        </PageLinkWrapper>
       </LinksContainer>
+
+      <ContentBox contents={homepageContents} homeGraphic />
     </main>
   );
 };
 
 export default Home;
-
-// <PageLink
-// gridSize="double"
-// userLink="/web-design"
-// linkText="Web Design"
-// userImage={WebDesign}
-// />
-// <PageLink userLink="/app-design" linkText="App Design" />
-// <PageLink userLink="/graphic-design" linkText="graphic Design" />
