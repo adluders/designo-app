@@ -114,7 +114,7 @@ const Footer = () => {
             </SubHeading>
           </div>
 
-          <Button>get in touch</Button>
+          <Button to="/contact">get in touch</Button>
         </Banner>
 
         <FooterNav>

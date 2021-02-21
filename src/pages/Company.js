@@ -7,7 +7,7 @@ import PageContent from "../components/global/PageContent";
 import ContentBox from "../components/global/ContentBox";
 
 import Hero from "../assets/about/desktop/image-about-hero.jpg";
-import TabletHero from "../assets/about/tablet/image-about-hero.jpg";
+// import TabletHero from "../assets/about/tablet/image-about-hero.jpg";
 import Talent from "../assets/about/desktop/image-world-class-talent.jpg";
 import RealDeal from "../assets/about/desktop/image-real-deal.jpg";
 import Australia from "../assets/shared/desktop/illustration-australia.svg";
@@ -15,7 +15,7 @@ import Canada from "../assets/shared/desktop/illustration-canada.svg";
 import UnitedKingdom from "../assets/shared/desktop/illustration-united-kingdom.svg";
 
 const InnerBanner = styled(Banner)`
-  border: solid red;
+  /* border: solid red; */
   @media screen and (max-width: 768px) {
     flex-direction: column-reverse;
   }
@@ -41,19 +41,19 @@ const companyContents = [
     id: 0,
     graphic: Australia,
     header: "Australia",
-    details: "details",
+    details: "see location",
   },
   {
     id: 1,
     graphic: Canada,
     header: "Cananda",
-    details: "details",
+    details: "see location",
   },
   {
     id: 2,
     graphic: UnitedKingdom,
     header: "united kingdom",
-    details: "details",
+    details: "see location",
   },
 ];
 
@@ -94,7 +94,7 @@ const Company = () => {
 
       <PageContent contents={pageContent} />
 
-      <ContentBox contents={companyContents} />
+      <ContentBox containButton contents={companyContents} />
 
       <PageContent orderChanged changeOrder contents={secondPageContent} />
     </main>

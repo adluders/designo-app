@@ -41,6 +41,7 @@ const Banner = styled.section`
       padding: 6.25rem;
       z-index: 1;
       color: #fff;
+      width: 1154px;
       max-width: 77%;
       div {
         max-width: 80%;

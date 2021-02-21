@@ -90,7 +90,7 @@ const Home = () => {
             fully responsive websites, app design, and engaging brand
             experiences. Find out more about our services.
           </SubHeading>
-          <Button>learn more</Button>
+          <Button to="/company">learn more</Button>
         </HeroInfoWrapper>
 
         <HeroGraphicWrapper>

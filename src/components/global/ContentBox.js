@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../global/Button";
 import BgPattern from "../../assets/home/desktop/bg-pattern-hero-home.svg";
 
 const ContentBoxWrapper = styled.section`
@@ -80,6 +81,7 @@ const ContentBox = ({
   bottomContentBox,
   homeGraphic,
   innerPage,
+  containButton,
 }) => {
   return (
     <ContentBoxWrapper
@@ -101,7 +103,13 @@ const ContentBox = ({
               innerPage={innerPage}
             />
             <ContentHeader> {header} </ContentHeader>
-            <Content innerPage={innerPage}> {details} </Content>
+            {containButton ? (
+              <Button to="/locations" primary="true">
+                {details}
+              </Button>
+            ) : (
+              <Content innerPage={innerPage}> {details} </Content>
+            )}
           </ContentItem>
         );
       })}

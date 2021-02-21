@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const Button = styled.button`
+export const Button = styled(Link)`
   border: none;
   outline: none;
   background-color: ${(props) => (props.primary ? "#e7816b" : "#fff")};
@@ -10,6 +11,8 @@ export const Button = styled.button`
   cursor: pointer;
   font-size: 15px;
   text-transform: uppercase;
+  min-width: 152px;
+  text-align: center;
   &:hover {
     color: #fff;
     background-color: #ffad9b;
