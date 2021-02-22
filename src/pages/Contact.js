@@ -110,13 +110,14 @@ const Contact = () => {
         <ContactForm>
           <ContactFormGroup>
             <ContactInputLabel htmlFor="name"></ContactInputLabel>
-            <ContactInput name="name" type="text" placeholder="Name" />
+            <ContactInput required name="name" type="text" placeholder="Name" />
           </ContactFormGroup>
 
           <ContactFormGroup>
             <ContactInputLabel htmlFor="emeail"></ContactInputLabel>
             <ContactInput
               type="email"
+              required
               name="email"
               placeholder="Email Address"
             />
@@ -124,12 +125,18 @@ const Contact = () => {
 
           <ContactFormGroup>
             <ContactInputLabel htmlFor="phone-number"></ContactInputLabel>
-            <ContactInput type="tel" name="phone-number" placeholder="Phone" />
+            <ContactInput
+              type="tel"
+              required
+              name="phone-number"
+              placeholder="Phone"
+            />
           </ContactFormGroup>
 
           <ContactFormGroup>
             <ContactInputLabel htmlFor="message"></ContactInputLabel>
             <ContactMessage
+              required
               name="message"
               rows="10"
               placeholder="Your Message"

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const LocationItemWrapper = styled.section`
   display: flex;
@@ -36,7 +38,6 @@ const LocationInfo = styled.p`
 `;
 
 const LocationMap = styled.div`
-  background-color: green;
   flex-grow: 1.5;
 `;
 
@@ -48,7 +49,13 @@ const LocationItem = ({ countryInfo, reversed }) => {
     cityDetails,
     phoneNumber,
     email,
+    longitude,
+    latitude,
   } = countryInfo;
+
+  const Map = ReactMapboxGl({
+    accessToken: `${process.env.REACT_APP_TOKEN}`,
+  });
 
   return (
     <LocationItemWrapper reversed={reversed}>
@@ -57,15 +64,34 @@ const LocationItem = ({ countryInfo, reversed }) => {
 
         <LocationInfoWrapper>
           <LocationInfo>{officeName}</LocationInfo>
-          <LocationInfo>{streetAddress}</LocationInfo>
-          <LocationInfo>{cityDetails}</LocationInfo>
           <LocationInfo>Contact</LocationInfo>
+          <LocationInfo>{streetAddress}</LocationInfo>
           <LocationInfo>P: {phoneNumber}</LocationInfo>
+          <LocationInfo>{cityDetails}</LocationInfo>
           <LocationInfo>M: {email}</LocationInfo>
         </LocationInfoWrapper>
       </LocationDetails>
 
-      <LocationMap></LocationMap>
+      <LocationMap>
+        <Map
+          // eslint-disable-next-line react/style-prop-object
+          style="mapbox://styles/mapbox/streets-v9"
+          containerStyle={{
+            height: "100%",
+            width: "100%",
+          }}
+          center={[longitude, latitude]}
+          zoom={[13]}
+        >
+          <Layer
+            type="symbol"
+            id="marker"
+            layout={{ "icon-image": "marker-15" }}
+          >
+            <Feature coordinates={[longitude, latitude]} />
+          </Layer>
+        </Map>
+      </LocationMap>
     </LocationItemWrapper>
   );
 };
