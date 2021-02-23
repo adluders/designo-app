@@ -53,8 +53,16 @@ const LocationItem = ({ countryInfo, reversed }) => {
     latitude,
   } = countryInfo;
 
+  let token;
+
+  if (process.env.NODE_ENV !== "production") {
+    token = process.env.REACT_APP_TOKEN;
+  } else {
+    token = process.env.TOKEN;
+  }
+
   const Map = ReactMapboxGl({
-    accessToken: `${process.env.REACT_APP_TOKEN}`,
+    accessToken: `${token}`,
   });
 
   return (
