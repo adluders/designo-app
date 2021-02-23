@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -64,6 +65,10 @@ const LocationItem = ({ countryInfo, reversed }) => {
   const Map = ReactMapboxGl({
     accessToken: `${token}`,
   });
+
+  useEffect(() => {
+    console.log(token);
+  }, [token]);
 
   return (
     <LocationItemWrapper reversed={reversed}>
