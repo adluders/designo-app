@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import styled from "styled-components";
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -54,21 +54,21 @@ const LocationItem = ({ countryInfo, reversed }) => {
     latitude,
   } = countryInfo;
 
-  let token;
+  // let token;
 
-  if (process.env.NODE_ENV !== "production") {
-    token = process.env.REACT_APP_TOKEN;
-  } else {
-    token = process.env.TOKEN;
-  }
+  // if (process.env.NODE_ENV !== "production") {
+  //   token = process.env.REACT_APP_TOKEN;
+  // } else {
+  //   token = process.env.TOKEN;
+  // }
 
   const Map = ReactMapboxGl({
-    accessToken: `${token}`,
+    accessToken: `pk.eyJ1IjoiYWRsdWRlcnMiLCJhIjoiY2tsZmVwMmVyMDFqNTJucXB6b2w1bjVmeCJ9.rLP5dkd-wOXBA9wpnaLhwA`,
   });
 
-  useEffect(() => {
-    console.log(token);
-  }, [token]);
+  // useEffect(() => {
+  //   console.log(token);
+  // }, [token]);
 
   return (
     <LocationItemWrapper reversed={reversed}>
