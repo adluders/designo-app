@@ -1,5 +1,13 @@
 import LocationItem from "../components/LocationItem";
 
+import AustraliaMap from "../assets/locations/desktop/image-map-australia.png";
+import CanadaMap from "../assets/locations/desktop/image-map-canada.png";
+import UkMap from "../assets/locations/desktop/image-map-united-kingdom.png";
+
+import MobileAusMap from "../assets/locations/tablet/image-map-australia.png";
+import MobileCanadaMap from "../assets/locations/tablet/image-map-canada.png";
+import MobileUkMap from "../assets/locations/tablet/image-map-uk.png";
+
 const canadaInfo = {
   countryName: "canada",
   officeName: "Designo Central Office",
@@ -7,8 +15,8 @@ const canadaInfo = {
   cityDetails: "Toronto, Ontario M9C 3J5",
   phoneNumber: "+1 253-863-8967",
   email: "contact@designo.com",
-  longitude: -79.39458,
-  latitude: 43.64401,
+  deskMap: CanadaMap,
+  mobileMap: MobileCanadaMap,
 };
 
 const australiaInfo = {
@@ -18,8 +26,8 @@ const australiaInfo = {
   cityDetails: "New South Wales 2443",
   phoneNumber: "(02) 6720 9092",
   email: "contact@designo.au",
-  longitude: 149.78819,
-  latitude: -30.32953,
+  deskMap: AustraliaMap,
+  mobileMap: MobileAusMap,
 };
 
 const ukInfo = {
@@ -29,8 +37,8 @@ const ukInfo = {
   cityDetails: "Rhyd-y-fro SA8 9GA",
   phoneNumber: "078 3115 1400",
   email: "contact@designo.uk",
-  longitude: -1.34263,
-  latitude: 53.70948,
+  deskMap: UkMap,
+  mobileMap: MobileUkMap,
 };
 
 const Locations = () => {

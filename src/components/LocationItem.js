@@ -1,7 +1,5 @@
-// import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 
 const LocationItemWrapper = styled.section`
   display: flex;
@@ -60,7 +58,10 @@ const LocationInfo = styled.p`
 `;
 
 const LocationMap = styled.div`
-  flex-grow: 1.5;
+  flex-grow: 1;
+  img {
+    border-radius: 1rem;
+  }
 `;
 
 const LocationItem = ({ countryInfo, reversed }) => {
@@ -71,25 +72,18 @@ const LocationItem = ({ countryInfo, reversed }) => {
     cityDetails,
     phoneNumber,
     email,
-    longitude,
-    latitude,
+    deskMap,
+    mobileMap,
   } = countryInfo;
 
-  let token;
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  if (process.env.NODE_ENV !== "production") {
-    token = process.env.REACT_APP_TOKEN;
-  } else {
-    token = process.env.TOKEN;
-  }
+  const updateWidth = () => setWindowWidth(window.innerWidth);
 
-  const Map = ReactMapboxGl({
-    accessToken: `${token}`,
-  });
-
-  // useEffect(() => {
-  //   console.log(token);
-  // }, [token]);
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
 
   return (
     <LocationItemWrapper reversed={reversed}>
@@ -111,24 +105,13 @@ const LocationItem = ({ countryInfo, reversed }) => {
       </LocationDetails>
 
       <LocationMap>
-        <Map
-          // eslint-disable-next-line react/style-prop-object
-          style="mapbox://styles/mapbox/streets-v9"
-          containerStyle={{
-            height: "100%",
-            width: "100%",
-          }}
-          center={[longitude, latitude]}
-          zoom={[13]}
-        >
-          <Layer
-            type="symbol"
-            id="marker"
-            layout={{ "icon-image": "marker-15" }}
-          >
-            <Feature coordinates={[longitude, latitude]} />
-          </Layer>
-        </Map>
+        {(() => {
+          if (windowWidth <= 768) {
+            return <img src={mobileMap} alt={`${countryName} map`} />;
+          } else {
+            return <img src={deskMap} alt={`${countryName} map`} />;
+          }
+        })()}
       </LocationMap>
     </LocationItemWrapper>
   );
