@@ -10,6 +10,10 @@ const LocationItemWrapper = styled.section`
 
   margin: 1rem auto;
   border-radius: 1rem;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const LocationDetails = styled.div`
@@ -18,6 +22,11 @@ const LocationDetails = styled.div`
   border-radius: 1rem;
 
   padding: 5rem 6rem;
+
+  @media screen and (max-width: 768px) {
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
 `;
 
 const LocationHeading = styled.h1`
@@ -25,17 +34,29 @@ const LocationHeading = styled.h1`
   font-weight: 400;
   color: #e7816b;
   text-transform: capitalize;
+
+  @media screen and (max-width: 414px) {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
 `;
 
 const LocationInfoWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   gap: 0 1rem;
+
+  @media screen and (max-width: 414px) {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.8rem;
+  }
 `;
 
 const LocationInfo = styled.p`
   color: #333136;
+  line-height: 25px;
 `;
 
 const LocationMap = styled.div`
@@ -54,16 +75,16 @@ const LocationItem = ({ countryInfo, reversed }) => {
     latitude,
   } = countryInfo;
 
-  // let token;
+  let token;
 
-  // if (process.env.NODE_ENV !== "production") {
-  //   token = process.env.REACT_APP_TOKEN;
-  // } else {
-  //   token = process.env.TOKEN;
-  // }
+  if (process.env.NODE_ENV !== "production") {
+    token = process.env.REACT_APP_TOKEN;
+  } else {
+    token = process.env.TOKEN;
+  }
 
   const Map = ReactMapboxGl({
-    accessToken: `pk.eyJ1IjoiYWRsdWRlcnMiLCJhIjoiY2tsZmVwMmVyMDFqNTJucXB6b2w1bjVmeCJ9.rLP5dkd-wOXBA9wpnaLhwA`,
+    accessToken: `${token}`,
   });
 
   // useEffect(() => {
@@ -76,12 +97,16 @@ const LocationItem = ({ countryInfo, reversed }) => {
         <LocationHeading>{countryName}</LocationHeading>
 
         <LocationInfoWrapper>
-          <LocationInfo>{officeName}</LocationInfo>
-          <LocationInfo>Contact</LocationInfo>
-          <LocationInfo>{streetAddress}</LocationInfo>
-          <LocationInfo>P: {phoneNumber}</LocationInfo>
-          <LocationInfo>{cityDetails}</LocationInfo>
-          <LocationInfo>M: {email}</LocationInfo>
+          <div>
+            <LocationInfo>{officeName}</LocationInfo>
+            <LocationInfo>{streetAddress}</LocationInfo>
+            <LocationInfo>{cityDetails}</LocationInfo>
+          </div>
+          <div>
+            <LocationInfo>Contact</LocationInfo>
+            <LocationInfo>P: {phoneNumber}</LocationInfo>
+            <LocationInfo>M: {email}</LocationInfo>
+          </div>
         </LocationInfoWrapper>
       </LocationDetails>
 

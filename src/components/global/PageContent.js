@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const PageContentWrapper = styled.section`
@@ -7,6 +8,14 @@ const PageContentWrapper = styled.section`
   background-color: #fdf3f0;
   /* flex-direction: row-reverse; */
   flex-direction: ${({ changeOrder }) => changeOrder && "row-reverse"};
+  @media screen and (max-width: 768px) {
+    /* border: solid red; */
+    flex-direction: column;
+  }
+  @media screen and (max-width: 414px) {
+    margin: 0;
+    border-radius: 0;
+  }
 `;
 
 const PageContentGraphic = styled.div`
@@ -14,9 +23,14 @@ const PageContentGraphic = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    min-width: 100%;
+  }
 `;
 
-const PageGraphic = styled.img`
+const PageGraphic = styled.img.attrs((props) => ({
+  src: props.img,
+}))`
   border-top-left-radius: ${({ orderChanged }) =>
     orderChanged ? "0rem" : ".8rem"};
   border-bottom-left-radius: ${({ orderChanged }) =>
@@ -25,10 +39,25 @@ const PageGraphic = styled.img`
     orderChanged ? "0.8rem" : "0rem"};
   border-bottom-right-radius: ${({ orderChanged }) =>
     orderChanged ? "0.8rem" : "0rem"};
+
+  @media screen and (max-width: 768px) {
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  @media screen and (max-width: 414px) {
+    border-radius: 0;
+  }
 `;
 
 const PageContentInfo = styled.div`
   padding: 9rem 6rem;
+  @media screen and (max-width: 414px) {
+    padding: 5.3rem 1.5rem;
+    text-align: center;
+  }
 `;
 
 const PageContentHeader = styled.h1`
@@ -47,11 +76,40 @@ const PageContentDetails = styled.p`
 `;
 
 const PageContent = ({ contents, changeOrder, orderChanged }) => {
-  const { graphic, header, info, info2 } = contents;
+  const {
+    graphic,
+    mobileGraphic,
+    tabletGraphic,
+    header,
+    info,
+    info2,
+  } = contents;
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const updateWidth = () => setWindowWidth(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
   return (
     <PageContentWrapper changeOrder={changeOrder}>
       <PageContentGraphic>
-        <PageGraphic src={graphic} orderChanged={orderChanged} />
+        {(() => {
+          if (windowWidth <= 414) {
+            return (
+              <PageGraphic img={mobileGraphic} orderChanged={orderChanged} />
+            );
+          } else if (windowWidth >= 415 && windowWidth <= 768) {
+            return (
+              <PageGraphic img={tabletGraphic} orderChanged={orderChanged} />
+            );
+          } else {
+            return <PageGraphic img={graphic} orderChanged={orderChanged} />;
+          }
+        })()}
       </PageContentGraphic>
 
       <PageContentInfo>

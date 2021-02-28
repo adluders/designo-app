@@ -17,9 +17,24 @@ const ContactBannerWrapper = styled(Banner)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 6rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 3.5rem 4.5rem;
+  }
+
+  @media screen and (max-width: 414px) {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
 `;
 
-const ContactContentWrapper = styled.div``;
+const ContactContentWrapper = styled.div`
+  @media screen and (max-width: 414px) {
+    padding: 3.5rem 4.5rem;
+  }
+`;
 
 const ContactHeading = styled(BannerHeading)``;
 
@@ -30,7 +45,9 @@ const ContactSubHeading = styled(BannerSubHeading)`
 `;
 
 const ContactForm = styled.form`
-  /* border: solid red; */
+  @media screen and (max-width: 414px) {
+    width: 80%;
+  }
 `;
 
 const ContactFormGroup = styled.div`
@@ -38,6 +55,11 @@ const ContactFormGroup = styled.div`
   display: flex;
   &:last-of-type {
     justify-content: flex-end;
+  }
+  @media screen and (max-width: 414px) {
+    &:last-of-type {
+      justify-content: center;
+    }
   }
 `;
 

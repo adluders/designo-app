@@ -37,10 +37,15 @@ const ContentItem = styled.div`
     grid-template-column: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 1rem;
+    padding-bottom: ${({ innerPage }) => innerPage && "0px"};
   }
   @media screen and (max-width: 630px) {
     display: flex;
     flex-direction: column;
+    margin: 2rem auto;
+  }
+  @media screen and (max-width: 414px) {
+    padding-bottom: ${({ innerPage }) => innerPage && "2rem"};
   }
 `;
 
@@ -53,6 +58,12 @@ const ContentGraphic = styled.img`
   border-top-right-radius: ${({ innerPage }) => innerPage && "1rem"};
   @media screen and (max-width: 768px) {
     grid-row: 1/3;
+    border-bottom-left-radius: ${({ innerPage }) => innerPage && "1rem"};
+    border-top-right-radius: ${({ innerPage }) => innerPage && "0px"};
+  }
+  @media screen and (max-width: 414px) {
+    border-bottom-left-radius: ${({ innerPage }) => innerPage && "0px"};
+    border-top-right-radius: ${({ innerPage }) => innerPage && "1rem"};
   }
 `;
 

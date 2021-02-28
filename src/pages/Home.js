@@ -32,7 +32,7 @@ const HeroInfoWrapper = styled.div`
 export const Heading = styled.h1`
   font-size: 48px;
   font-weight: 400;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 414px) {
     font-size: 32px;
   }
 `;

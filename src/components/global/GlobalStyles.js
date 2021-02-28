@@ -33,14 +33,14 @@ export const Container = styled.div`
   @media screen and (max-width: 768px) {
     width: 90%;
   }
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 414px) {
     width: 100%;
   }
 `;
 
 export const LogoWrapper = styled.div`
   width: 25%;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 414px) {
     width: 50%;
   }
 `;

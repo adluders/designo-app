@@ -62,15 +62,21 @@ const Banner = styled.section`
       @media screen and (max-width: 539px) {
         bottom: 626px;
       }
-      @media screen and (max-width: 375px) {
+      @media screen and (max-width: 414px) {
         padding: 4rem 2rem;
         margin: 2rem;
+        border-radius: 1rem;
       }
     `}
 
   @media screen and (max-width: 768px) {
     flex-direction: ${({ location }) => changeFlexDir(location)};
     background-position: center;
+  }
+
+  @media screen and (max-width: 414px) {
+    border-radius: 0rem;
+    left: -10px;
   }
 `;
 

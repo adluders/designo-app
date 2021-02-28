@@ -67,7 +67,7 @@ export const LinksContainer = styled.section`
   @media screen and (max-width: 768px) {
     margin: 7.5rem 0;
   }
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 414px) {
     margin-left: 1rem;
     margin-right: 1rem;
   }
@@ -102,8 +102,9 @@ export const PageLinkItem = styled.li`
     background-image: ${({ tabletImage }) => getTabletBg(tabletImage)};
   }
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 414px) {
     background-image: ${({ mobileImage }) => getMobileBg(mobileImage)};
+    margin: 2rem 0;
   }
 `;
 
@@ -134,7 +135,7 @@ export const PageLink = styled(Link)`
     min-height: 200px;
   }
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 414px) {
     min-height: 250px;
   }
 `;
@@ -150,7 +151,7 @@ export const PageLinkSubtext = styled.p`
     width: 8%;
   }
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 414px) {
     min-width: 45%;
   }
 `;
